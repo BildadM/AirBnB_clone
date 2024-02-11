@@ -1,13 +1,17 @@
 #!/usr/bin/python3
+""" from models.base_model import BaseModel """
 
 import uuid
 from datetime import datetime
 
+
 class BaseModel:
     def __init__(self, *args, **kwargs):
         if kwargs:
-            kwargs["created_at"] = datetime.strptime(kwargs["created_at"], "%Y-%m-%dT%H:%M:%S.%f")
-            kwargs["updated_at"] = datetime.strptime(kwargs["updated_at"], "%Y-%m-%dT%H:%M:%S.%f")
+            kwargs["created_at"] = datetime.strptime
+            (kwargs["created_at"], "%Y-%m-%dT%H:%M:%S.%f")
+            kwargs["updated_at"] = datetime.strptime
+            (kwargs["updated_at"], "%Y-%m-%dT%H:%M:%S.%f")
             for key, value in kwargs.items():
                 if key != "__class__":
                     setattr(self, key, value)
@@ -17,7 +21,8 @@ class BaseModel:
             self.updated_at = self.created_at
 
     def __str__(self):
-        return "[{}] ({}) {}".format(self.__class__.__name__, self.id, self.__dict__)
+        return "[{}] ({}) {}".format(self.__class__.__name__,
+                self.id, self.__dict__)
 
     def save(self):
         self.updated_at = datetime.now()
