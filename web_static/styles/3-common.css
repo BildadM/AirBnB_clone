@@ -1,0 +1,15 @@
+body {
+  margin: 0;
+  padding: 0;
+  color: #484848;
+  font-size: 14px;
+  font-family: Circular, "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+/* Custom favicon styling */
+/* Replace "favicon.ico" with your actual favicon image file name */
+/* Place your favicon.ico image in the "images" directory */
+/* Adjust the path accordingly if the image is in a different directory */
+/* You can generate a favicon.ico file from your image using online tools */
+/* Example: https://favicon.io/favicon-converter/ */
+<link rel="icon" href="images/favicon.ico" type="image/x-icon">
