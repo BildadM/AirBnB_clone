@@ -11,35 +11,35 @@ from models.review import Review
 
 
 class FileStorage:
-    """ A cutsom storage engine for storing objects in JSON format."""
-
     __file_path = "file.json"
     __objects = {}
 
-    def get_all_objects(self):
-        """Retrives all objects stored in the storage engine."""
-        return FileStorage.__objects
+    def all(self):
+        """Returns the dictionary __objects"""
+        return self.__objects
 
-    def add_new_object(self, obj):
-        """Add a new object to the storage engine"""
-        object_class_name = obj.__class__.__name__
-        FileStorage.__objects["{}.{}".format(object_class_name, obj.id)] = obj
+    def new(self, obj):
+        """Sets in __objects the obj with key <obj class name>.id"""
+        key = "{}.{}".format(obj.__class__.__name__, obj.id)
+        self.__objects[key] = obj
 
-    def save_object_to_file(self):
-        """Serialize __objects to the JSON file."""
-        odict = FileStorage.__objects
-        objdict = {obj: odict[obj].to_dict() for obj in odict.keys()}
-        with open(FileStorage.__file_path, "w") as fil:
-            json.dump(objdict, fil)
+    def save(self):
+        """Serializes __objects to the JSON file"""
+        data = {}
+        for key, obj in self.__objects.items():
+            data[key] = obj.to_dict()
 
-    def load_objects_from_file(self):
-        """Deserialize the JSON file."""
+        with open(self.__file_path, 'w') as file:
+            json.dump(data, file)
+
+    def reload(self):
+        """Deserializes the JSON file to __objects"""
         try:
-            with open(FileStorage.__file_path) as fil:
-                objd = json.load(f)
-                for o in objd.values():
-                    class_name = o["__class__"]
-                    del o["__class__"]
-                    self.new(eval(cls_name)(**o))
+            with open(self.__file_path, 'r') as file:
+                data = json.load(file)
+                for key, obj_dict in data.items():
+                    class_name, obj_id = key.split('.')
+                    obj = eval(class_name)(**obj_dict)
+                    self.__objects[key] = obj
         except FileNotFoundError:
-            return
+            pass

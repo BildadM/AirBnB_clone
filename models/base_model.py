@@ -3,6 +3,7 @@
 
 import uuid
 from datetime import datetime
+import models
 
 
 class BaseModel:
@@ -17,6 +18,8 @@ class BaseModel:
                     self.__dict__[k] = datetime.strptime(v, timeform)
                 else:
                         self.__dict__[k] = v
+        else:
+            models.storage.new(self)
 
     def __str__(self):
         return "[{}] ({}) {}".format(self.__class__.__name__,
@@ -24,6 +27,7 @@ class BaseModel:
 
     def save(self):
         self.updated_at = datetime.now()
+        models.storage.save()
 
     def to_dict(self):
         obj_dict = self.__dict__.copy()
