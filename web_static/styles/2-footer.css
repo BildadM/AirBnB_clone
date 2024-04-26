@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 footer {
   background-color: #00FF00;
   height: 60px;
@@ -12,4 +13,14 @@ footer {
 
 footer p {
   color: white;
+=======
+footer{
+    Background-color:#00FF00;
+    height:60px;
+    width:100%;
+    position: absolute;
+    bottom:0;
+    text-align:center;
+    line-height:60px
+>>>>>>> 28b7b86cd63375835b38e670df6739af9bf06137
 }

@@ -1,4 +1,5 @@
 body {
+<<<<<<< HEAD
   margin: 0;
   padding: 0;
   color: #484848;
@@ -13,3 +14,12 @@ body {
 /* You can generate a favicon.ico file from your image using online tools */
 /* Example: https://favicon.io/favicon-converter/ */
 <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+=======
+	margin: 0px;
+	padding: 0px;
+	height: 100%;
+	color: #484848;
+	font-family: Circular,"Helvetica Neue",Helvetica,Arial,sans-serif;
+	font-size: 14px;
+}
+>>>>>>> 28b7b86cd63375835b38e670df6739af9bf06137
